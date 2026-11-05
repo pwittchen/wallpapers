@@ -1,13 +1,13 @@
 ---
-name: add-wallpapers
+name: process-wallpapers
 description: Process wallpaper images in this repo: review them, rename to descriptive names, crop/resize to 21:9 and apply the standard top vignette. Works on new (untracked) images and on already committed ones, recovering the pre-vignette original from git history so the vignette is never applied twice. Use when the user adds new images or asks to process, re-crop, rename, resize or vignette existing wallpapers.
 ---
 
 # Add / reprocess wallpapers
 
 Bundled scripts (run from the repo root):
-- `.claude/skills/add-wallpapers/process.sh [--no-vignette] [--force] <src> <dst> [yoffset]`: crop to 3440:1440 (21:9), keep native resolution clamped to between 3440×1440 and 5160×2160, apply the standard vignette (top edge ~50% brightness fading out over the top 30%, plus ~13% darkening at the edges), and write a JPEG at quality 92 with metadata stripped. It refuses to overwrite `dst` without `--force`. With `--no-vignette`, an image that's already 21:9 is left untouched (no lossy re-encode).
-- `.claude/skills/add-wallpapers/find-original.sh <tracked-path> [out-file]`: finds the last committed version from **before** the vignette was applied (the commit before the first one that touched the file and mentions "vignette", following renames). Prints `<rev>:<path>` and writes the file to `out-file`. Exit code 2 = the file was already vignetted when it was first committed, so no original exists in history.
+- `.claude/skills/process-wallpapers/process.sh [--no-vignette] [--force] <src> <dst> [yoffset]`: crop to 3440:1440 (21:9), keep native resolution clamped to between 3440×1440 and 5160×2160, apply the standard vignette (top edge ~50% brightness fading out over the top 30%, plus ~13% darkening at the edges), and write a JPEG at quality 92 with metadata stripped. It refuses to overwrite `dst` without `--force`. With `--no-vignette`, an image that's already 21:9 is left untouched (no lossy re-encode).
+- `.claude/skills/process-wallpapers/find-original.sh <tracked-path> [out-file]`: finds the last committed version from **before** the vignette was applied (the commit before the first one that touched the file and mentions "vignette", following renames). Prints `<rev>:<path>` and writes the file to `out-file`. Exit code 2 = the file was already vignetted when it was first committed, so no original exists in history.
 
 ## 1. Determine the targets
 

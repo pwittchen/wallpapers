@@ -17,4 +17,4 @@ Personal macOS desktop wallpaper collection. There's no code, only images groupe
 
 ## Adding or reprocessing wallpapers
 
-Use the `add-wallpapers` skill (`.claude/skills/add-wallpapers/`). It reviews, renames, crops/resizes and vignettes new untracked images. It also works on already committed images, starting from their pre-vignette originals in git history.
+Use the `process-wallpapers` skill (`.claude/skills/process-wallpapers/`). It reviews, renames, crops/resizes and vignettes new untracked images. It also works on already committed images, starting from their pre-vignette originals in git history.
